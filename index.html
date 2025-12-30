@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Error</title>
+<style>
+body{margin:0;padding:0;overflow:hidden;background:#000;}
+#bg{position:fixed;top:0;left:0;width:100%;height:100%;animation:blink 0.1s infinite;}
+@keyframes blink{0%,50%{background:#ff0000;}51%,100%{background:#000;}}
+.err{position:fixed;width:80%;max-width:300px;background:#fff;border:2px solid #f00;padding:20px;border-radius:5px;z-index:9999;box-shadow:0 0 20px #f00;}
+.err button{float:right;background:#f00;color:#fff;border:none;padding:5px 10px;cursor:pointer;}
+.vid{position:fixed;width:150px;height:100px;border:2px solid #f00;background:#000;z-index:1000;}
+#final{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:99999;flex-direction:column;justify-content:center;align-items:center;}
+#final img{max-width:80%;margin-bottom:20px;}
+#final p{color:#f00;font-size:24px;font-weight:bold;text-align:center;}
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="final"><img src="1000015909.jpg"><p>You made a mistake. I am going to k@i464lcbl now.</p></div>
+<audio id="errSound" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7/AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4A=" preload="auto"></audio>
+<script>
+const vids=['1000015905.mp4','1000015901
+.mp4','1000015903.mp4','1000015906.mp4','1000015902.mp4','1000015904.mp4'];
+let cnt=0;
+let startTime=Date.now();
+function showErr(){
+if(cnt>=6666)return;
+const err=document.createElement('div');
+err.className='err';
+err.innerHTML='<button onclick="spawn()">❌</button><p>ERROR: システムエラーが発生しました</p>';
+err.innerHTML='<button onclick="spawn()">❌</button><p>ERROR: システムエラーが発生しました</p>';
+document.body.appendChild(err);
+err.style.top=Math.random()*80+'%';
+err.style.left=Math.random()*80+'%';
+document.getElementById('errSound').play();
+}
+function spawn(){
+for(let i=0;i<5;i++){
+if(cnt>=6666)break;
+const v=document.createElement('video');
+v.className='vid';
+v.src=vids[Math.floor(Math.random()*vids.length)];
+v.autoplay=true;
+v.loop=true;
+v.style.top=Math.random()*80+'%';
+v.style.left=Math.random()*80+'%';
+document.body.appendChild(v);
+cnt++;
+setInterval(()=>{
+v.style.top=Math.random()*80+'%';
+v.style.left=Math.random()*80+'%';
+},1000);
+}
+}
+showErr();
+setInterval(()=>{
+if(Date.now()-startTime>10800000){
+document.getElementById('final').style.display='flex';
+}else{
+spawn();
+}
+},500);
+history.pushState(null,null,location.href);
+window.onpopstate=()=>history.go(1);
+</script>
+</body> </html> ```
